@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<title>フォロワー1000人チャレンジ — @dckozaida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;900&family=M+PLUS+Rounded+1c:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff6e3; --bg-dot:#f3e3bd;
+  --ink:#25324b; --ink2:#66788f; --line:#cfe0ea;
+  --card:#ffffff; --card2:#eaf6ff;
+  --sky:#6eb8f5; --sea:#57c9bc; --sand:#fdebd0; --lav:#c9bff2;
+  --r-pink:#ff8fab; --r-orange:#ffb27a; --r-yellow:#ffd94d; --r-green:#7ed492; --r-cyan:#4ecfe0; --r-purple:#b49fdb;
+  --shadow:rgba(37,50,75,.9);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#1d2a44; --bg-dot:#27375a;
+    --ink:#fdf6e3; --ink2:#b9c7da; --line:#3b4f74;
+    --card:#27354f; --card2:#22314d;
+    --shadow:rgba(10,16,30,.9);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;
+  font-family:"M PLUS Rounded 1c","Zen Kaku Gothic New",system-ui,sans-serif;
+  background-color:var(--bg);
+  background-image:radial-gradient(var(--bg-dot) 1.6px, transparent 1.7px);
+  background-size:26px 26px;}
+.num{font-family:"Archivo",sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px 40px}
+.rainbow-line{height:8px;background:linear-gradient(90deg,var(--r-pink),var(--r-orange),var(--r-yellow),var(--r-green),var(--r-cyan),var(--r-purple))}
+
+/* hero — compact, picture-book */
+.hero{padding:20px 0 4px;text-align:left}
+.kicker{display:inline-flex;align-items:center;gap:7px;font-weight:800;font-size:11px;letter-spacing:.12em;border:2px solid var(--ink);padding:5px 12px;border-radius:999px;background:var(--card)}
+.kicker b{width:9px;height:9px;border-radius:50%;background:var(--r-pink);border:1.5px solid var(--ink)}
+h1{font-size:clamp(28px,7.5vw,44px);line-height:1.25;font-weight:800;margin:14px 0 8px;letter-spacing:.01em}
+h1 .thin{display:block;font-size:13px;font-weight:700;color:var(--ink2);letter-spacing:.04em;margin-bottom:6px}
+h1 em{font-style:normal;position:relative;white-space:nowrap}
+h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.34em;border-radius:99px;background:linear-gradient(90deg,var(--r-pink),var(--r-orange),var(--r-yellow),var(--r-green),var(--r-cyan),var(--r-purple));z-index:-1;opacity:.75}
+.lead{font-size:14.5px;color:var(--ink2);margin:0;line-height:1.75;font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500}
+.lead strong{color:var(--ink)}
+
+/* scene — picture book illustration */
+.scene{margin-top:16px;border:2.5px solid var(--ink);border-radius:22px 26px 20px 28px;overflow:hidden;background:#8ecfff;box-shadow:5px 5px 0 var(--shadow)}
+.scene-view{position:relative;line-height:0;overflow:hidden}
+.scene-view svg{width:100%;height:auto;display:block}
+.scene .cap{display:flex;justify-content:space-between;gap:8px;padding:9px 14px;border-top:2.5px solid var(--ink);background:var(--sand);color:#25324b;font-size:12px;font-weight:800;line-height:1.4}
+.scene .cap span:last-child{font-family:"Archivo",sans-serif}
+.live-badge{position:absolute;top:10px;right:10px;background:#ff5d8f;color:#fff;font-family:"Archivo",sans-serif;font-weight:900;font-size:13px;padding:6px 13px;border-radius:999px;border:2px solid var(--ink);display:none;align-items:center;gap:6px;line-height:1}
+.live-badge i{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulse 1.2s infinite}
+.live-badge.show{display:inline-flex}
+@keyframes pulse{50%{opacity:.35}}
+
+/* main panel */
+.panel{background:var(--card);border:2.5px solid var(--ink);border-radius:22px 26px 20px 28px;padding:18px;margin-top:18px;box-shadow:5px 5px 0 var(--shadow)}
+.count-row{display:flex;align-items:flex-end;gap:8px}
+.count-row .now{font-family:"Archivo",sans-serif;font-weight:900;font-size:64px;line-height:.95;letter-spacing:-.02em}
+.count-row .unit{font-weight:800;font-size:16px;padding-bottom:6px}
+.count-row .goal{margin-left:auto;text-align:right;font-size:12px;color:var(--ink2);font-weight:800;line-height:1.3}
+.count-row .goal b{display:block;font-family:"Archivo",sans-serif;font-size:22px;color:var(--ink)}
+.remain{margin-top:6px;font-weight:800;font-size:15px}
+.remain b{font-family:"Archivo",sans-serif;font-size:22px;color:#1d9db5}
+@media (prefers-color-scheme: dark){ .remain b{color:var(--r-cyan)} }
+.progress{height:20px;border:2.5px solid var(--ink);border-radius:999px;overflow:hidden;background:var(--card2);margin-top:10px}
+.progress i{display:block;height:100%;width:62%;background:linear-gradient(90deg,var(--r-pink),var(--r-orange),var(--r-yellow),var(--r-green),var(--r-cyan),var(--r-purple));transition:width .5s}
+.dots{display:flex;align-items:center;gap:6px;margin-top:12px;flex-wrap:wrap}
+.dots i{width:22px;height:22px;border-radius:50%;border:2px solid var(--ink);opacity:.22;filter:grayscale(1)}
+.dots i.on{opacity:1;filter:none}
+.dots span{font-size:12px;color:var(--ink2);font-weight:700;margin-left:2px}
+.stage-msg{margin-top:12px;background:var(--card2);border:2px dashed var(--ink);color:var(--ink);border-radius:16px 18px 14px 20px;padding:11px 13px;font-weight:700;font-size:13.5px;line-height:1.65;font-family:"Zen Kaku Gothic New",sans-serif}
+.stage-msg b{color:#e2547e}
+@media (prefers-color-scheme: dark){ .stage-msg b{color:var(--r-pink)} }
+.sim{margin-top:16px;border-top:2px dotted var(--line);padding-top:14px}
+.sim label{font-weight:800;font-size:13px;display:flex;justify-content:space-between}
+.sim label output{font-family:"Archivo",sans-serif}
+input[type=range]{width:100%;accent-color:#1d9db5;height:40px;cursor:pointer;margin:2px 0}
+.presets{display:flex;gap:6px;flex-wrap:wrap}
+.presets button{flex:1;min-width:64px;border:2px solid var(--ink);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 6px;font-weight:800;font-family:inherit;font-size:12.5px;cursor:pointer;min-height:40px}
+.presets button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.sim-note{font-size:11.5px;color:var(--ink2);margin:8px 0 0;font-family:"Zen Kaku Gothic New",sans-serif}
+
+/* CTA + QR */
+.cta{margin-top:18px;text-align:center}
+a.follow{display:flex;justify-content:center;align-items:center;gap:8px;background:var(--ink);color:#fff6e3;text-decoration:none;font-weight:800;padding:15px 18px;border-radius:999px;border:2.5px solid var(--ink);box-shadow:4px 4px 0 var(--shadow);font-size:16px;width:100%}
+a.follow span{font-family:"Archivo",sans-serif}
+.qr-mini{margin-top:18px;background:var(--card);border:2.5px solid var(--ink);border-radius:22px 26px 20px 28px;padding:16px;text-align:center;box-shadow:5px 5px 0 var(--shadow)}
+.qr-mini img{width:148px;height:148px;background:#fff;padding:8px;border:2.5px solid var(--ink);border-radius:16px 18px 14px 20px}
+.qr-mini p{margin:8px 0 0;font-size:13px;font-weight:800}
+.qr-mini small{color:var(--ink2);font-size:12px;font-family:"Zen Kaku Gothic New",sans-serif}
+.why-line{margin-top:14px;font-size:13px;color:var(--ink2);text-align:center;line-height:1.75;font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500}
+.why-line strong{color:var(--ink)}
+
+/* details — secondary info tucked away */
+details{margin-top:18px;background:var(--card);border:2.5px solid var(--ink);border-radius:18px 22px 16px 24px;overflow:hidden}
+summary{cursor:pointer;font-weight:800;font-size:14px;padding:14px 16px;list-style:none;display:flex;justify-content:space-between;align-items:center;min-height:48px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";font-family:"Archivo",sans-serif}
+details[open ] summary::after{content:"−"}
+.details-body{padding:0 16px 16px;font-size:13.5px;color:var(--ink2);line-height:1.7;font-family:"Zen Kaku Gothic New",sans-serif}
+.details-body p{margin:0 0 10px}
+.flyer{background:#fffaf0;color:#25324b;border:2.5px solid #25324b;border-radius:14px 18px 12px 20px;padding:14px;position:relative;overflow:hidden;text-align:left}
+.flyer::before{content:"";position:absolute;inset:0 0 auto;height:8px;background:linear-gradient(90deg,var(--r-pink),var(--r-orange),var(--r-yellow),var(--r-green),var(--r-cyan),var(--r-purple))}
+.flyer h3{margin:10px 0 4px;font-size:19px;line-height:1.3;color:#25324b;font-family:"M PLUS Rounded 1c",sans-serif;font-weight:800}
+.flyer h3 b{color:#1d9db5}
+.flyer p{font-size:12px;color:#5a6a82!important}
+.flyer .f-row{display:flex;gap:12px;align-items:center;margin-top:8px}
+.flyer .f-row img{width:76px;height:76px}
+.flyer .f-acct{font-family:"Archivo",sans-serif;font-weight:900;font-size:16px;color:#25324b;line-height:1.2}
+.flyer .f-acct small{display:block;font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;font-size:11px;color:#5a6a82;margin-top:3px}
+.flyer .f-arc{margin-top:10px;height:12px;border-radius:99px;border:2px solid #25324b;background:linear-gradient(90deg,var(--r-pink),var(--r-orange),var(--r-yellow),var(--r-green),#dceef2 62%,#eef4f5)}
+
+footer{margin-top:20px;text-align:center;color:var(--ink2);font-size:11.5px;line-height:1.6;padding:0 4px;font-family:"Zen Kaku Gothic New",sans-serif}
+.burst{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:50}
+.burst i{position:absolute;width:11px;height:11px;border-radius:3px;animation:fall 1.4s ease-out forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(560deg);opacity:0}}
+@media(min-width:640px){
+  .wrap{padding:0 20px 56px}
+  .hero{padding-top:28px}
+  .count-row .now{font-size:80px}
+  a.follow{width:auto;display:inline-flex;min-width:340px}
+  .cta{text-align:center}
+  .scene,.panel,.qr-mini{box-shadow:7px 7px 0 var(--shadow)}
+}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="rainbow-line" aria-hidden="true"></div>
+<div class="wrap">
+
+<header class="hero">
+  <span class="kicker"><b></b>DESIGN COMP 2026</span>
+  <h1><span class="thin">@dckozaida ・ IDA デザイン＆アート展 公式</span>フォロワー<em>1000人</em>で<br>虹が完成する。</h1>
+  <p class="lead">フォロワーが増えるたび、岬の空の虹が伸びていきます。<strong>1,000人で、展覧会をPCからInstagramライブ配信</strong>できるようになります。</p>
+</header>
+
+<div class="scene" aria-label="沖縄の岬と虹の風景">
+  <div class="scene-view" id="sceneView">
+    <svg id="sceneSvg" viewBox="0 0 800 560" role="img" aria-labelledby="sceneTitle sceneDesc">
+      <title id="sceneTitle">沖縄の岬と、形づくられていく虹</title>
+      <desc id="sceneDesc">フォロワー数が増えるごとに虹が伸び、6色の帯がそろいます。</desc>
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5db1f2"/><stop offset=".6" stop-color="#8ecfff"/><stop offset="1" stop-color="#cdeffd"/></linearGradient>
+        <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7adcd0"/><stop offset="1" stop-color="#3fbfae"/></linearGradient>
+      </defs>
+      <!-- sky -->
+      <rect width="800" height="400" fill="url(#sky)"/>
+
+      <!-- faint full arc guide -->
+      <g fill="none" stroke-linecap="round" opacity=".14" stroke="#ffffff"><path d="M110 400 A310 310 0 0 1 730 400" stroke-width="96"/></g>
+
+      <!-- rainbow bands (pastel, grow with followers) -->
+      <g fill="none" stroke-linecap="round" id="bands">
+        <path class="band" data-start="300" pathLength="100" stroke-dasharray="100" stroke="#ff8fab" stroke-width="16" d="M110 400 A310 310 0 0 1 730 400"/>
+        <path class="band" data-start="360" pathLength="100" stroke-dasharray="100" stroke="#ffb27a" stroke-width="16" d="M126 400 A294 294 0 0 1 714 400"/>
+        <path class="band" data-start="420" pathLength="100" stroke-dasharray="100" stroke="#ffe98a" stroke-width="16" d="M142 400 A278 278 0 0 1 698 400"/>
+        <path class="band" data-start="480" pathLength="100" stroke-dasharray="100" stroke="#a5e8b0" stroke-width="16" d="M158 400 A262 262 0 0 1 682 400"/>
+        <path class="band" data-start="540" pathLength="100" stroke-dasharray="100" stroke="#4ecfe0" stroke-width="16" d="M174 400 A246 246 0 0 1 666 400"/>
+        <path class="band" data-start="600" pathLength="100" stroke-dasharray="100" stroke="#b49fdb" stroke-width="16" d="M190 400 A230 230 0 0 1 650 400"/>
+      </g>
+
+      <!-- bubble dots -->
+      <g fill="#ffffff" stroke="#25324b" stroke-width="2.5">
+        <circle cx="46" cy="120" r="7"/><circle cx="76" cy="88" r="5"/><circle cx="238" cy="128" r="6"/>
+        <circle cx="352" cy="96" r="5"/><circle cx="566" cy="128" r="7"/><circle cx="604" cy="94" r="5"/>
+        <circle cx="716" cy="150" r="6"/><circle cx="330" cy="300" r="5"/><circle cx="486" cy="318" r="6"/>
+        <circle cx="646" cy="330" r="5"/><circle cx="96" cy="352" r="5"/>
+      </g>
+
+      <!-- sea -->
+      <rect y="400" width="800" height="160" fill="url(#sea)"/>
+      <path d="M330 452 Q470 430 800 470 L800 512 Q480 478 330 492 Z" fill="#1d9db5" opacity=".55"/>
+      <g stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity=".55">
+        <path d="M52 442 q14 -8 28 0 q14 8 28 0" fill="none"/><path d="M120 500 q14 -8 28 0 q14 8 28 0" fill="none"/>
+        <path d="M560 428 q14 -8 28 0 q14 8 28 0" fill="none"/>
+      </g>
+      <path d="M0 400 H800" stroke="#25324b" stroke-width="3" opacity=".85"/>
+      <ellipse id="footGlow" cx="706" cy="406" rx="54" ry="8" fill="#ffffff" opacity=".25"/>
+
+      <!-- sandy cape on the left with lighthouse -->
+      <path d="M0 560 L0 420 Q40 404 84 402 Q130 400 168 390 Q214 380 246 392 Q272 402 280 424 L262 448 Q232 470 216 500 Q202 528 198 560 Z" fill="#fdebd0" stroke="#25324b" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M28 470 Q62 452 94 460 Q64 474 40 496 Q30 506 24 522 Q14 496 28 470Z" fill="#a5e8b0" stroke="#25324b" stroke-width="3" stroke-linejoin="round"/>
+      <g stroke="#25324b" stroke-width="3" stroke-linejoin="round">
+        <path d="M196 388 L200 336 L224 336 L228 388 Z" fill="#ffffff"/>
+        <path d="M199 362 L225 362 L226 376 L198 376 Z" fill="#ff8fab" stroke="none"/>
+        <rect x="194" y="318" width="36" height="18" rx="5" fill="#25324b"/>
+        <rect x="204" y="322" width="16" height="10" rx="3" fill="#fff3a0" stroke="none"/>
+        <path d="M192 318 L232 318 L212 300 Z" fill="#ff8fab"/>
+      </g>
+
+      <!-- sandy shore across the bottom -->
+      <path d="M0 560 L0 518 Q130 502 280 512 Q440 524 600 510 Q710 502 800 516 L800 560 Z" fill="#fdebd0" stroke="#25324b" stroke-width="3" stroke-linejoin="round"/>
+
+      <!-- sandy path to the horizon -->
+      <path d="M356 560 Q420 486 486 442 Q520 420 548 404 L586 404 Q540 448 492 492 Q452 530 436 560 Z" fill="#fdebd0" stroke="#25324b" stroke-width="3" stroke-linejoin="round"/>
+      <!-- tiny tree on the horizon -->
+      <g stroke="#25324b" stroke-width="2.5" stroke-linejoin="round">
+        <path d="M552 402 L552 390" stroke-linecap="round"/>
+        <path d="M552 372 L564 392 L540 392 Z" fill="#7ed492"/>
+      </g>
+    </svg>
+    <div class="live-badge" id="liveBadge"><i></i>LIVE OK</div>
+  </div>
+  <div class="cap"><span id="sceneCap">虹が形づくられる途中</span><span id="scenePct">62%</span></div>
+</div>
+
+<div class="panel">
+  <div class="count-row">
+    <span class="now num" id="nowNum">620</span><span class="unit">人</span>
+    <div class="goal">GOAL<b class="num">1,000</b></div>
+  </div>
+  <div class="remain">あと <b class="num" id="remainNum">380</b> 人</div>
+  <div class="progress" role="img" aria-label="達成率62パーセント" id="progressBar"><i id="progFill"></i></div>
+  <div class="dots" aria-label="虹の色の進み具合">
+    <i data-th="380" style="background:var(--r-pink)"></i>
+    <i data-th="440" style="background:var(--r-orange)"></i>
+    <i data-th="500" style="background:var(--r-yellow)"></i>
+    <i data-th="560" style="background:var(--r-green)"></i>
+    <i data-th="620" style="background:var(--r-cyan)"></i>
+    <i data-th="680" style="background:var(--r-purple)"></i>
+    <span id="dotsLabel">青まで点灯中 ・ 次は紫</span>
+  </div>
+  <div class="stage-msg" id="stageMsg"></div>
+  <div class="sim">
+    <label for="simRange">未来をプレビュー <output id="simOut">620人</output></label>
+    <input type="range" id="simRange" min="0" max="1000" step="10" value="620">
+    <div class="presets" role="group" aria-label="人数のプリセット">
+      <button type="button" data-v="620" aria-pressed="true">現在 620</button>
+      <button type="button" data-v="750" aria-pressed="false">750</button>
+      <button type="button" data-v="900" aria-pressed="false">900</button>
+      <button type="button" data-v="1000" aria-pressed="false">1,000</button>
+    </div>
+    <p class="sim-note">スライダーは見え方のプレビューです。実際の人数は変わりません。</p>
+  </div>
+</div>
+
+<div class="cta">
+  <a class="follow" href="https://www.instagram.com/dckozaida/" target="_blank" rel="noopener">Instagramでフォローする <span>@dckozaida</span></a>
+</div>
+
+<div class="qr-mini">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAc4AAAHOAQAAAAA5ndQdAAACo0lEQVR4nO2dQW7jMAxFP8cGZuncSLnZXM0+ytwgXhaw8buQSMlOV63bwPXXxpHiB0ULguSXqBjxybb++SwJCBUqVKjQK6Ig+Wi6HckxP8h2kBvnlMjldGsVKvRoNLE0ALPdwQWzmaF7sioyTO2kaxUq9EjUzMzu+XOimd0AcAGQyDf/bjYz64+bVajQ34ROBgBIxGo37337rEKFnhsdOEbyk7Me6zFw/N5ZhQo9F+qhV5v/Jxow5JH5BhCYLY2IwS/PKlTo70AnKw1ZIUDH/3aH9QASPbNZ/a3by3+wUKEvRnvsPEluqyc3A8Mf7d863VqFCj0OzSlNVaWzDu2i2pKznvzwvR5gILWfI/TaaA7EJkO3AABXGwigIzBZ8TIGFKWt5EBfnlWo0LOjcG+zbAajNzR7n7ETSvkcoVdHs+WM8Vh230UkF0GbLEeoUABbh9LmMqOnO4A/wgPp3JrQi6PuV7ahGFwFqO+lrB4khnpwurUKFXocuovIAD8u0FhOa05jpDuyHKFXRsMsuo9yGW69DDau53RrFSr0OBTV2ZTW5jKhHjzq7o58jlCh2Fa21b3PxpzSrqQt3jzdWoUKPQ7dHYve1oR+eIZA2ppQoajaWlNekFjMqUoD0VJkQLIcoVdGN7aSmpsH9uZUmqI1oUIBoJHRQk1Djs9iW8fVtI0jkuUIvTw6W209BpL2tx6Zngyr3QCUMh3dQyBUqKORvZRRLpgtKtt8Q3Rpe6ddq1ChR6CNQgA/hFNV6ZDYngFFa0KF7lqi9ZjtH71+um/FaUVrQoXWGzzaNt25LbHullLSNhuAUvx2vrUKFXo8ujuEs/p9HoNHa1PujX67x6t/sFChL0Wf75V+IFRpP7e21God6NyaUKEATP8CIlSoUKFCfwh9B1UCjvsTwq4cAAAAAElFTkSuQmCC" alt="Instagram @dckozaida のQRコード" width="148" height="148">
+  <p>カメラで読み取ってフォロー</p>
+  <small>QRが使えないときは Instagramで @dckozaida を検索</small>
+</div>
+
+<p class="why-line"><strong>なぜ1,000人？</strong> — InstagramライブをPCから配信できる条件です。<br>Design Comp 2026（12/19〜21）を、会場に来られない人にも届けます。</p>
+
+<details>
+  <summary>配れるチラシを見る</summary>
+  <div class="details-body">
+    <p>A4に4枚（A6）並べて印刷し、切り分けて配れます。</p>
+    <article class="flyer">
+      <div style="font-size:10px;font-weight:800;letter-spacing:.12em">DESIGN COMP 2026 ・ 公式INSTAGRAM</div>
+      <h3>あと<b>380人</b>で、<br>ライブ配信ができる。</h3>
+      <p>フォロワー1,000人で展覧会をPCからライブ配信できます。1フォローで虹が少し伸びます。</p>
+      <div class="f-row"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAc4AAAHOAQAAAAA5ndQdAAACo0lEQVR4nO2dQW7jMAxFP8cGZuncSLnZXM0+ytwgXhaw8buQSMlOV63bwPXXxpHiB0ULguSXqBjxybb++SwJCBUqVKjQK6Ig+Wi6HckxP8h2kBvnlMjldGsVKvRoNLE0ALPdwQWzmaF7sioyTO2kaxUq9EjUzMzu+XOimd0AcAGQyDf/bjYz64+bVajQ34ROBgBIxGo37337rEKFnhsdOEbyk7Me6zFw/N5ZhQo9F+qhV5v/Jxow5JH5BhCYLY2IwS/PKlTo70AnKw1ZIUDH/3aH9QASPbNZ/a3by3+wUKEvRnvsPEluqyc3A8Mf7d863VqFCj0OzSlNVaWzDu2i2pKznvzwvR5gILWfI/TaaA7EJkO3AABXGwigIzBZ8TIGFKWt5EBfnlWo0LOjcG+zbAajNzR7n7ETSvkcoVdHs+WM8Vh230UkF0GbLEeoUABbh9LmMqOnO4A/wgPp3JrQi6PuV7ahGFwFqO+lrB4khnpwurUKFXocuovIAD8u0FhOa05jpDuyHKFXRsMsuo9yGW69DDau53RrFSr0OBTV2ZTW5jKhHjzq7o58jlCh2Fa21b3PxpzSrqQt3jzdWoUKPQ7dHYve1oR+eIZA2ppQoajaWlNekFjMqUoD0VJkQLIcoVdGN7aSmpsH9uZUmqI1oUIBoJHRQk1Djs9iW8fVtI0jkuUIvTw6W209BpL2tx6Zngyr3QCUMh3dQyBUqKORvZRRLpgtKtt8Q3Rpe6ddq1ChR6CNQgA/hFNV6ZDYngFFa0KF7lqi9ZjtH71+um/FaUVrQoXWGzzaNt25LbHullLSNhuAUvx2vrUKFXo8ujuEs/p9HoNHa1PujX67x6t/sFChL0Wf75V+IFRpP7e21God6NyaUKEATP8CIlSoUKFCfwh9B1UCjvsTwq4cAAAAAElFTkSuQmCC" alt="Instagram @dckozaida のQRコード"><div class="f-acct">@dckozaida<small>現在 620人 ／ 目標 1,000人<br>カメラで読み取ってフォロー</small></div></div>
+      <div class="f-arc" aria-hidden="true"></div>
+    </article>
+    <p style="margin-top:10px">印刷は「A4・余白最小・背景グラフィックON」がおすすめです。</p>
+  </div>
+</details>
+
+<footer>
+  <p>フォロワー数は2026年11月17日時点：620人（あと380人）<br>最新はInstagramでご確認ください。</p>
+</footer>
+</div>
+
+<div class="burst" id="burst" aria-hidden="true"></div>
+
+<script>
+(function(){
+  var START=620;
+  var range=document.getElementById('simRange'), out=document.getElementById('simOut');
+  var nowNum=document.getElementById('nowNum'), remainNum=document.getElementById('remainNum');
+  var fill=document.getElementById('progFill'), msg=document.getElementById('stageMsg'), cap=document.getElementById('sceneCap'), pct=document.getElementById('scenePct');
+  var bar=document.getElementById('progressBar'), svg=document.getElementById('sceneSvg');
+  var foot=document.getElementById('footGlow'), badge=document.getElementById('liveBadge'), burstBox=document.getElementById('burst');
+  var dots=[].slice.call(document.querySelectorAll('.dots i'));
+  var dotsLabel=document.getElementById('dotsLabel');
+  var bands=[].slice.call(document.querySelectorAll('.band'));
+  var wasComplete=false;
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+  function stageText(n){
+    if(n>=1000) return {cap:'完成 — 完全な虹', msg:'<b>1,000人達成！</b> 虹が完成し、LIVEバッジが点灯。PCライブ配信が解禁です。', dots:'6色すべて点灯 — 完成！'};
+    if(n>=900) return {cap:'あと少し', msg:'<b>900人台。</b> 虹がつながりそうです。残るは最後のひと伸び。', dots:'6色すべて点灯中'};
+    if(n>=680) return {cap:'6色そろった虹', msg:'<b>680人〜。</b> 紫まで6色がそろいました。あとは弧を伸ばす仕上げです。', dots:'6色すべて点灯中'};
+    if(n>=560) return {cap:'虹が形づくられる途中', msg:'<b>現在はこのあたり。</b> 赤から青まで伸びています。あと少しで紫が出ます。', dots:'青まで点灯中 ・ 次は紫'};
+    if(n>=380) return {cap:'虹が伸び始めている', msg:'<b>380人〜。</b> 最初の色が岬の上から伸び始めています。', dots:'最初の色が点灯中'};
+    return {cap:'空だけ — 虹はまだない', msg:'<b>出発点は空と海だけ。</b> フォロワーが増えるたび、虹が形づくられます。', dots:'まだ点灯なし'};
+  }
+  function celebrate(){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var colors=['#ff8fab','#ffb27a','#ffd94d','#7ed492','#4ecfe0','#b49fdb'];
+    for(var i=0;i<28;i++){var s=document.createElement('i');s.style.left=(Math.random()*100)+'vw';s.style.top='-20px';s.style.background=colors[i%6];s.style.animationDelay=(Math.random()*0.35)+'s';if(i%3===0)s.style.borderRadius='50%';burstBox.appendChild(s);}
+    setTimeout(function(){burstBox.innerHTML='';},2200);
+  }
+  function render(n){
+    n=clamp(n,0,1000);
+    nowNum.textContent=n.toLocaleString('ja-JP');
+    remainNum.textContent=Math.max(0,1000-n).toLocaleString('ja-JP');
+    out.textContent=n.toLocaleString('ja-JP')+'人';
+    var p=n/10; fill.style.width=p+'%'; bar.setAttribute('aria-label','達成率'+Math.round(p)+'パーセント'); pct.textContent=Math.round(p)+'%';
+    var st=stageText(n); cap.textContent=st.cap; msg.innerHTML=st.msg; dotsLabel.textContent=st.dots;
+    dots.forEach(function(d){ d.classList.toggle('on', n>=parseInt(d.getAttribute('data-th'),10)); });
+    bands.forEach(function(b){ var s=parseInt(b.getAttribute('data-start'),10); var bp=clamp((n-s)/420,0,1); b.style.strokeDashoffset=String(100*(1-bp)); b.style.opacity=bp<=0?'0':String(0.35+0.65*bp); });
+    svg.style.filter='saturate('+(0.55+0.45*(n/1000)).toFixed(2)+')';
+    foot.style.opacity=String(0.08+0.4*(n/1000));
+    badge.classList.toggle('show', n>=1000);
+    document.querySelectorAll('.presets button').forEach(function(b){ b.setAttribute('aria-pressed', parseInt(b.getAttribute('data-v'),10)===n?'true':'false'); });
+    if(n>=1000 && !wasComplete) celebrate(); wasComplete=n>=1000;
+  }
+  range.addEventListener('input',function(){ render(parseInt(range.value,10)); });
+  document.querySelectorAll('.presets button').forEach(function(b){ b.addEventListener('click',function(){ var v=parseInt(b.getAttribute('data-v'),10); range.value=v; render(v); }); });
+  render(START);
+})();
+</script>
+</body>
+</html>
